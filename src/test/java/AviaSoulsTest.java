@@ -102,13 +102,15 @@ public class AviaSoulsTest {
                 15_20, 16_40);
         Ticket[] tickets = {ticket4, ticket6};
 
-        boolean result1 = ticket6.equals(ticket6);
-        boolean result2 = ticket4.equals(ticket6);
+        boolean[] results = {
+                ticket6.equals(ticket6),
+                ticket4.equals(ticket6)
+        };
 
-        Assertions.assertTrue(result1);
-        Assertions.assertTrue(result2);
+        boolean[] expectedResults = {true, true};
+
+        Assertions.assertArrayEquals(expectedResults, results);
     }
-
     @Test
     public void SearchPriceFalse() {
         Ticket ticket6 = new Ticket("Москва", "Санкт-Петербург", 14_345,
@@ -124,20 +126,25 @@ public class AviaSoulsTest {
         Ticket[] tickets = {ticket4, ticket6, ticket7, ticket8, ticket9, ticket10};
         String string = new String("Bla");
 
-        boolean result1 = ticket4.equals(ticket6);
-        boolean result2 = ticket4.equals(string);
-        boolean result3 = ticket4.equals(null);
-        boolean result4 = ticket4.equals(ticket7);
-        boolean result5 = ticket4.equals(ticket8);
-        boolean result6 = ticket4.equals(ticket9);
-        boolean result7 = ticket4.equals(ticket10);
+        boolean[] result = {
+                ticket4.equals(ticket6),
+                ticket4.equals(string),
+                ticket4.equals(null),
+                ticket4.equals(ticket7),
+                ticket4.equals(ticket8),
+                ticket4.equals(ticket9),
+                ticket4.equals(ticket10)
+        };
+        boolean[] expectedResult = {
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+        };
 
-        Assertions.assertFalse(result1);
-        Assertions.assertFalse(result2);
-        Assertions.assertFalse(result3);
-        Assertions.assertFalse(result4);
-        Assertions.assertFalse(result5);
-        Assertions.assertFalse(result6);
-        Assertions.assertFalse(result7);
+        Assertions.assertArrayEquals(expectedResult, result);
     }
 }
